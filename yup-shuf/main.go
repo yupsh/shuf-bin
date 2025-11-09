@@ -6,7 +6,7 @@ import (
 
 	"github.com/urfave/cli/v2"
 
-	yup "github.com/gloo-foo/framework"
+	gloo "github.com/gloo-foo/framework"
 	. "github.com/yupsh/shuf"
 )
 
@@ -81,7 +81,7 @@ func action(c *cli.Context) error {
 		params = append(params, Echo)
 	} else {
 		for i := 0; i < c.NArg(); i++ {
-			params = append(params, yup.File(c.Args().Get(i)))
+			params = append(params, gloo.File(c.Args().Get(i)))
 		}
 	}
 
@@ -104,5 +104,5 @@ func action(c *cli.Context) error {
 
 	// Create and execute the shuf command
 	cmd := Shuf(params...)
-	return yup.Run(cmd)
+	return gloo.Run(cmd)
 }
